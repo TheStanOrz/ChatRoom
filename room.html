@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatRoom</title>
+    <script src="/room.js" type="module" defer></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="go-home"><img src="home.svg" alt=""></a>
+        <a href="#"><img src="invite.svg" alt="Invite" class="invite-button" id="invite-button"></a>
+        
+        <div class="title-container">
+            <h1 class="title" id="chat-room-name"></h1>
+            <img src="edit.svg" alt="Edit" class="edit-icon" id="edit-icon">
+        </div>
+        <div class="inner-container">
+            <div class="messages" id="messages">
+                <!-- <div class="message">
+                    <div class="message-user-self">User2</div>
+                    <div class="text-self">Hello</div>
+                </div>
+                <div class="message">
+                    <div class="message-user">User1</div>
+                    <div class="text">Text</div>
+                </div> -->
+            </div>
+            <div class="input-form" id="input-form">
+                <input type="text" class="input-form-input" id="input-form-input" placeholder="Enter a message">
+                <button class="input-form-button" id="input-form-button">Send</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal" id="invite-modal">
+        <div class="modal-content">
+            <h2 class="modal-title">Invite</h2>
+            <input type="text" id="invite-link" readonly>
+            <button class="copy-link-btn" id="copy-link-btn">Copy link</button>
+            <img src="close_modal.svg" alt="Close" class="close-modal" id="close-invite-modal">
+        </div>
+    </div>
+</body>
+</html>
