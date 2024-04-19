@@ -101,7 +101,6 @@ body{
   justify-content: space-between;
 }
 .messages{
-  
   width: 320px;
   display: flex;
   flex-direction: column;
@@ -116,7 +115,7 @@ body{
 }
 .message .text{
   background-color: #EEEFF0;
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 10px 20px;
   width: fit-content;
   max-width: 50%;
@@ -125,7 +124,7 @@ body{
 .message .text-self{
   background-color: #0085ff;
   color: white;
-  border-radius: 20px;
+  border-radius: 15px;
   padding: 10px 20px;
   width: fit-content;
   margin-left: auto;
@@ -140,6 +139,16 @@ body{
   font-size: 12px;
   text-align: right;
   font-weight: bold;
+}
+.message .time-self{
+  display: flex;
+  justify-content: end;
+  font-size: 12px;
+  opacity: 0.5;
+}
+.message .time{
+  font-size: 12px;
+  opacity: 0.5;
 }
 .input-form{
   background-color: #EEEFF0;

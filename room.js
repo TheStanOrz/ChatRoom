@@ -12,6 +12,7 @@ import {
 function appendMessages(message) {
   const messageContainer = document.getElementById("messages");
   const messageElement = document.createElement("div");
+  const time = document.createElement("div");
   messageElement.classList.add("message");
   const user = document.createElement("div");
   user.innerText = message.senderName;
@@ -19,14 +20,24 @@ function appendMessages(message) {
   if (message.isSelf) {
     user.classList.add("message-user-self");
     messageText.classList.add("text-self");
+    time.classList.add("time-self");
   } else {
     user.classList.add("message-user");
     messageText.classList.add("text");
+    time.classList.add("time");
   }
   messageText.innerText = message.content;
-
+  const timestampMilliseconds = message.timestamp.seconds * 1000;
+  const date = new Date(timestampMilliseconds);
+  const hours = date.getHours();
+  const minutes = date.getMinutes();
+  const period = hours >= 12 ? "下午" : "上午";
+  const formattedHours = hours % 12 === 0 ? 12 : hours % 12;
+  const formattedMinutes = minutes < 10 ? "0" + minutes : minutes;
+  time.innerText = period + " " + formattedHours + ":" + formattedMinutes;
   messageElement.appendChild(user);
   messageElement.appendChild(messageText);
+  messageElement.appendChild(time);
   messageContainer.appendChild(messageElement);
 }
 
