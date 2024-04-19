@@ -89,9 +89,9 @@ export async function subscribeToRoom(fn, roomId) {
     roomId,
     COLLECTIONS.MESSAGE
   );
-  const unsubscribe = onSnapshot(messageRef, (messages) => {
+  const unsubscribe = onSnapshot(messageRef, (snapshot) => {
     const auth = getAuth();
-    const transformMessages = messages.docs.map((doc) => {
+    const messages = snapshot.docs.map((doc) => {
       const data = doc.data();
       const id = doc.id;
       return {
@@ -100,7 +100,11 @@ export async function subscribeToRoom(fn, roomId) {
         ...data,
       };
     });
-    fn(transformMessages);
+
+    // 按時間戳（timestamp）字段排序訊息
+    messages.sort((a, b) => a.timestamp - b.timestamp);
+
+    fn(messages);
   });
   return unsubscribe;
 }
