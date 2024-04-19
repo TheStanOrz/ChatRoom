@@ -104,6 +104,14 @@ export async function subscribeToRoom(fn, roomId) {
   });
   return unsubscribe;
 }
+export async function subscribeToRoomName(fn, roomId) {
+  const db = getFirestore();
+  const roomRef = collection(db, COLLECTIONS.ROOM);
+  const unsubscribe = onSnapshot(roomRef, () => {
+    fn(roomId);
+  });
+  return unsubscribe;
+}
 
 export function getRoom(roomId) {
   const db = getFirestore();

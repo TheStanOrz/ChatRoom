@@ -5,6 +5,7 @@ import {
   requireAuth,
   sendMessageToRoom,
   subscribeToRoom,
+  subscribeToRoomName,
   updateRoomName,
 } from "./scripts/firebase";
 
@@ -115,8 +116,10 @@ function addEditIconListener(roomId) {
 }
 async function loadRoomName(roomId) {
   const title = document.getElementById("chat-room-name");
-  const room = await getRoom(roomId);
-  title.textContent = room.name;
+  if (title) {
+    const room = await getRoom(roomId);
+    title.textContent = room.name;
+  }
 }
 function scroll() {
   const scrollContainer = document.getElementById("messages");
@@ -158,8 +161,8 @@ function messageUpdateHandler(messages) {
 }
 requireAuth().then((user) => {
   const roomId = new URLSearchParams(window.location.search).get("roomID");
-  loadRoomName(roomId);
   setupEventListeners(roomId);
   subscribeToRoom(messageUpdateHandler, roomId);
+  subscribeToRoomName(loadRoomName, roomId);
   checkParticipants(roomId);
 });
