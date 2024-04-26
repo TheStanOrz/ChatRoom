@@ -5,7 +5,8 @@
 body{
   margin: 0;
   min-height: calc(100vh - 100px);
-  background: linear-gradient(180deg,#c1e1ff 0%,#f5f5f5 100%); 
+  background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.7)),url("./public/bg.jpg");
+  
   font-family: "Montserrat",sans-serif;
 }
 .show-user{
